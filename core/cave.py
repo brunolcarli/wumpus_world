@@ -152,7 +152,7 @@ class Cave:
         """
         Init the gold position in the map.
         """
-        goold_coords = None
+        gold_coords = None
 
         while not gold_coords:
             x, y = randint(0, self.max_height-1), randint(0, self.max_width-1)
