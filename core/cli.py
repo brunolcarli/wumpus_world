@@ -25,7 +25,7 @@ def cli_main_menu():
         }
         option = None
         while option not in options.keys():
-            option = input('Choose an valid option.\n> ')
+            option = input('Choose a valid option.\n> ')
 
         if option == '5':
             break
@@ -156,4 +156,26 @@ def cli_ranking():
 
 
 def cli_about():
-    print('Not implemented yet')
+    about = '''
+    This simple game was developed by an very nice
+    brazilian software engineer called Bruno Luvizotto Carli
+    (Beelzebruno) while studying contents from his
+    specialization in Applied Artificial Intelligence course.
+
+    In this version of the game you are a Hunter who
+    enters a dark cave to find a lost sack of gold.
+    But the cave hids many dangers as bottomless pits
+    and a ferocious (and stinky) Wumpus.
+
+    Your main objective is to find the treasure and exit
+    the cave.
+
+    This version was adapted from the content described on the book
+    Artificial Intelligence by Stuart Russel and Peter Norvig 3rd ed. (2013).
+    The original Wumpus World is a common Aritifial Intelligence problem
+    that was first developed by Gregory Yob in 1973 with the name
+    Hunt the Wumpus.
+
+    Bruno L. Carli, 2021.
+    '''
+    print(about)
