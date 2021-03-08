@@ -5,7 +5,7 @@ from core.cave import Cave, Area
 from core.wumpus import Wumpus
 from core.agent import Hunter
 from core.util import ascii_banner
-from core.external_requests import Query
+from core.external_requests import Query, Mutation
 
 
 def cli_main_menu():
@@ -144,6 +144,9 @@ def cli_game():
     print(f'Rounds played: {plays}')
     print('-------------------------')
 
+    # ask to save performance
+    cli_register_score(player.performance, plays)
+
     print('Game Over')
     print('-------------------------')
 
@@ -164,6 +167,35 @@ def cli_ranking():
         date = score.get('gameDatetime')
         print(f'{name} {performance} {rounds} {date}')
     print('-------------------------\n')
+
+
+def cli_register_score(performance, rounds):
+    save = input('Do you want to save your performance?\n1 - yes\n2 - no\n> ')
+    valid_options = ['yes', 'y', '1']
+    if save not in valid_options:
+        return
+
+    name = None
+    while not name:
+        name = input('Insert a valid name!\n> ')
+
+    print('-------------------------\n')
+    print('Please wait, connecting withe the server...')
+    score = Mutation.register_score(name, performance, rounds).get('data')
+    score = score.get('createWumpusScore', {})
+    score = score.get('score')
+    if score:
+        name = score.get('playerName')
+        performance = score.get('performance')
+        rounds = score.get('rounds')
+        date = score.get('gameDatetime')
+
+        print('Registered score:\n')
+        print('-------------------------')
+        print('NAME PERFORMANCE ROUNDS DATE')
+        print(f'{name} {performance} {rounds} {date}')
+    else:
+        print('No response received from server.')
 
 
 def cli_about():
