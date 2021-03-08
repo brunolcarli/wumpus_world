@@ -1,6 +1,8 @@
 """
 General utilities module.
 """
+from game.settings import __version__
+
 
 def get_perception(agent, cave, is_wall=None,):
     """
@@ -17,3 +19,16 @@ def get_perception(agent, cave, is_wall=None,):
     wumpus = cave._map[x][y].wumpus
 
     return (stink, breeze, shine, impact, wumpus)
+
+
+def ascii_banner():
+    return r'''
+
+     __      __
+     \ \    / /  _ _ __  _ __ _  _ ___
+      \ \/\/ / || | '  \| '_ \ || (_-<
+     __\_/\_/_\_,_|_|_|_| .__/\_,_/__/
+     \ \    / /__ _ _| ||_| |
+      \ \/\/ / _ \ '_| / _` |
+       \_/\_/\___/_| |_\__,_|
+   ''' + f'\n\tversion: {__version__}'
