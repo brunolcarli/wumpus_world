@@ -22,7 +22,7 @@
 
 <div align="center">
 
-> [![Version badge](https://img.shields.io/badge/version-0.0.0-silver.svg)]()
+> [![Version badge](https://img.shields.io/badge/version-0.0.1-silver.svg)]()
 [![Docs Link](https://badgen.net/badge/docs/github_wiki?icon=github)](https://github.com/brunolcarli/wumpus_world/wiki)
 
 Wumpus World is a simple toy game to developed to explore artificial intelligence search algorythms possibilities. And also to have some fun, off course.
