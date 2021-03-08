@@ -5,6 +5,7 @@ from core.cave import Cave, Area
 from core.wumpus import Wumpus
 from core.agent import Hunter
 from core.util import ascii_banner
+from core.external_requests import Query
 
 
 def cli_main_menu():
@@ -152,7 +153,17 @@ def cli_autopilot():
 
 
 def cli_ranking():
-    print('Not implemented yet')
+    top10 = Query.get_top_10().get('data')
+    print('Showing top 10\n')
+    print('-------------------------')
+    print('NAME PERFORMANCE ROUNDS DATE')
+    for score in top10.get('wumpusScores', []):
+        name = score.get('playerName')
+        performance = score.get('performance')
+        rounds = score.get('rounds')
+        date = score.get('gameDatetime')
+        print(f'{name} {performance} {rounds} {date}')
+    print('-------------------------\n')
 
 
 def cli_about():
