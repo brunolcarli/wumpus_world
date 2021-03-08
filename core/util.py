@@ -1,4 +1,6 @@
-
+"""
+General utilities module.
+"""
 
 def get_perception(agent, cave, is_wall=None,):
     """

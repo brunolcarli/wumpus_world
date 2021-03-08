@@ -26,17 +26,15 @@ class Cave:
         self.max_width = max_width
         self._map = self.build()
 
-        # Initialize pits and wumpus
+        # Initialize gold, pits and wumpus
         self.init_pit_position()
         self.init_wumpus_position()
-
-    def build(self):
-        """
-        Init the cave.
-        """
-        return [[Area([x, y]) for y in range(self.max_width)] for x in range(self.max_height)]
+        self.init_gold_position()
 
     def __str__(self):
+        """
+        Shows the map as default str object representation.
+        """
         image = '\n'
         for row in self._map:
             image += ' '.join(str(i) for i in row)
@@ -49,16 +47,25 @@ class Cave:
     def __delitem__(self, index):
         self._map.__delitem__(index )
 
-    def insert(self, index, value):
-        self._map.insert(index, value)
-
     def __setitem__(self, index, value):
         self._map.__setitem__(index, value)
 
     def __getitem__(self, index):
         return self._map.__getitem__(index)
 
+    def build(self):
+        """
+        Init the cave areas.
+        """
+        return [[Area([x, y]) for y in range(self.max_width)] for x in range(self.max_height)]
+
+    def insert(self, index, value):
+        self._map.insert(index, value)
+
     def set_agent_position(self, agent, x, y):
+        """
+        Initializes the agent position on the map.
+        """
         current_x, current_y = agent.current_position
         self._map[current_x][current_y].agent = None
         self._map[x][y].agent = agent
@@ -67,6 +74,9 @@ class Cave:
         return self._map[x][y]
 
     def init_pit_position(self):
+        """
+        Initialize the pits positions on the map.
+        """
         pits_coords = []
 
         while len(pits_coords) < 3:
@@ -100,6 +110,9 @@ class Cave:
                 self._map[x][y-1].breeze = 'breeze'
 
     def init_wumpus_position(self):
+        """
+        Initializes the wumpus position in the map.
+        """
         wumpus = Wumpus()
         wumpus_coords = None
 
@@ -136,6 +149,9 @@ class Cave:
             self._map[x][y-1].stink = 'stink'
 
     def init_gold_position(self):
+        """
+        Init the gold position in the map.
+        """
         goold_coords = None
 
         while not gold_coords:

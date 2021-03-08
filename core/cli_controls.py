@@ -35,9 +35,6 @@ def action_controller(player, action):
                 if perception:
                     print(str(perception).capitalize())
 
-        # if perception[-1]:
-        #     print(perception[-1])
-
     elif action == 'collect':
         player.collect()
 
