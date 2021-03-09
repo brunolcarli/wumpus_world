@@ -1,4 +1,3 @@
-
 ```
     __      __
     \ \    / /  _ _ __  _ __ _  _ ___
@@ -14,7 +13,6 @@
 
 # Wumpus World
 
-*Logical Unity for Communicational Interactivity*
 
 </td></tr>
 
@@ -28,6 +26,7 @@
 Wumpus World is a simple toy game to developed to explore artificial intelligence search algorythms possibilities. And also to have some fun, off course.
 
 </div>
+
 
 This project still under development, the developer is still workin on the AI autopilots, but the game mechanics were already implemented and and online ranking for those competitive players who wish to stay on top.
 
